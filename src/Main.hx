@@ -44,7 +44,8 @@ function main() {
 	final installationResult = runUntilFailure([
 		setupLix.bind(haxeVersion),
 		run.bind("sudo add-apt-repository ppa:haxe/snapshots -y"), // for nekotools
-		run.bind("sudo apt-get update"), // for nekotools
+		run.bind("sudo apt-get install --fix-missing"), // for nekotools
+		run.bind("sudo apt-get upgrade"), // for nekotools
 		run.bind("sudo apt-get install neko -y"), // for nekotools
 		// run.bind("haxelib install haxelib 4.0.3"), // 4.1.0 is failing on unit tests
 		installHaxelibs.bind(flixelVersions),
