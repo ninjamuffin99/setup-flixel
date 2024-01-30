@@ -3128,8 +3128,9 @@ function Main_main() {
 	actions_Core.startGroup("Installing Haxe Dependencies");
 	let haxeVersion1 = haxeVersion;
 	let cmd = "sudo add-apt-repository ppa:haxe/snapshots -y";
-	let cmd1 = "sudo apt-get update";
-	let cmd2 = "sudo apt-get install neko -y";
+	let cmd1 = "sudo apt-get install --fix-missing";
+	let cmd2 = "sudo apt-get upgrade";
+	let cmd3 = "sudo apt-get install neko -y";
 	let flixelVersions1 = flixelVersions;
 	let target1 = target;
 	if(Command_runUntilFailure([function() {
@@ -3140,6 +3141,8 @@ function Main_main() {
 		return Command_run(cmd1);
 	},function() {
 		return Command_run(cmd2);
+	},function() {
+		return Command_run(cmd3);
 	},function() {
 		return Main_installHaxelibs(flixelVersions1);
 	},function() {
